@@ -1,0 +1,915 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course Portfolio Assessment - Product School AI Certifications</title>
+<meta name="description" content="Synthesis of Product School's three AI certifications - AI Vibe Coding, AI Product Management, AI Product Strategy - pairing weekly student and instructor feedback with the canonical course packages to produce sized, sequenced editorial decisions.">
+<meta name="author" content="Product School Content Library">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Course Portfolio Assessment - Product School AI Certifications">
+<meta property="og:description" content="Three certifications, one library, one feedback loop. Per-cert deep dive, cross-cutting patterns, sequenced backlog, and instrumentation gaps.">
+<meta property="og:site_name" content="Product School Content Library">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Course Portfolio Assessment - Product School AI Certifications">
+<meta name="twitter:description" content="Three certifications, one library, one feedback loop. Per-cert deep dive, cross-cutting patterns, sequenced backlog.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #07162C;
+    --bg-soft: #0c1f3d;
+    --bg-card: rgba(18, 65, 176, 0.08);
+    --bg-card-hover: rgba(59, 130, 246, 0.14);
+    --border: rgba(96, 165, 250, 0.18);
+    --border-strong: rgba(96, 165, 250, 0.36);
+    --deep: #1241B0;
+    --primary: #3b82f6;
+    --light: #60a5fa;
+    --body: #b0b4c8;
+    --muted: #8899bb;
+    --heading: #ffffff;
+    --good: #34d399;
+    --warn: #f59e0b;
+    --bad: #f87171;
+    --display: 'Poppins', system-ui, sans-serif;
+    --serif: 'Lato', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--body);
+    font-family: var(--serif);
+    font-weight: 400;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .progress-bar {
+    position: fixed; top: 0; left: 0;
+    height: 3px; width: 0;
+    background: linear-gradient(90deg, var(--deep), var(--primary), var(--light));
+    z-index: 100;
+    transition: width 80ms linear;
+  }
+  .container { max-width: 1180px; margin: 0 auto; padding: 0 32px; }
+  .nav {
+    position: sticky; top: 0;
+    background: rgba(7, 22, 44, 0.92);
+    backdrop-filter: saturate(140%) blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 50;
+  }
+  .nav-inner {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 32px;
+    max-width: 1180px; margin: 0 auto;
+    gap: 24px;
+  }
+  .nav-brand {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--light);
+  }
+  .nav-links { display: flex; gap: 18px; flex-wrap: wrap; }
+  .nav-link {
+    font-family: var(--display);
+    font-weight: 500;
+    font-size: 0.85rem;
+    color: var(--body);
+    text-decoration: none;
+    transition: color 200ms ease;
+  }
+  .nav-link:hover { color: var(--light); }
+
+  .hero {
+    padding: 88px 0 56px;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute; inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 80% 0%, rgba(59, 130, 246, 0.18), transparent 60%),
+      radial-gradient(ellipse 40% 40% at 10% 100%, rgba(18, 65, 176, 0.22), transparent 60%);
+    pointer-events: none;
+  }
+  .hero-inner { position: relative; z-index: 1; }
+  .eyebrow {
+    font-family: var(--mono);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 20px;
+  }
+  h1 {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: clamp(2.4rem, 5vw, 3.8rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    color: var(--heading);
+    margin: 0 0 24px;
+    max-width: 920px;
+  }
+  .lede {
+    font-size: 1.15rem; line-height: 1.6;
+    color: var(--body);
+    max-width: 780px;
+    margin: 0 0 32px;
+  }
+  .stats-strip {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 16px;
+    margin-top: 16px;
+  }
+  .stat {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 18px 20px;
+    background: var(--bg-card);
+  }
+  .stat-num {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.6rem;
+    color: var(--heading);
+    line-height: 1.1;
+  }
+  .stat-label {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 6px;
+  }
+
+  section {
+    padding: 72px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  section:last-of-type { border-bottom: none; }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 12px; font-weight: 500;
+    letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--light);
+    margin-bottom: 14px;
+  }
+  h2 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    color: var(--heading);
+    margin: 0 0 20px;
+  }
+  h3 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.15rem;
+    color: var(--heading);
+    margin: 0 0 12px;
+  }
+  .section-lede {
+    font-size: 1.05rem; color: var(--body);
+    max-width: 760px; margin: 0 0 36px;
+  }
+  p { margin: 0 0 16px; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 28px;
+  }
+  @media (max-width: 820px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 26px;
+    background: var(--bg-card);
+  }
+  .card-eyebrow {
+    font-family: var(--mono);
+    font-size: 11px; font-weight: 500;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 10px;
+  }
+
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 16px;
+  }
+  .pipe-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px;
+    background: var(--bg-card);
+  }
+  .pipe-row {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 6px;
+  }
+  .pipe-name {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--heading);
+    font-size: 0.98rem;
+  }
+  .status {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono);
+    font-size: 10px; font-weight: 500;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  .status::before {
+    content: ''; width: 7px; height: 7px; border-radius: 50%;
+  }
+  .status.good { background: rgba(52, 211, 153, 0.12); color: var(--good); border: 1px solid rgba(52, 211, 153, 0.32); }
+  .status.good::before { background: var(--good); }
+  .status.warn { background: rgba(245, 158, 11, 0.12); color: var(--warn); border: 1px solid rgba(245, 158, 11, 0.32); }
+  .status.warn::before { background: var(--warn); }
+  .status.bad { background: rgba(248, 113, 113, 0.12); color: var(--bad); border: 1px solid rgba(248, 113, 113, 0.32); }
+  .status.bad::before { background: var(--bad); }
+  .pipe-desc { font-size: 0.88rem; color: var(--body); line-height: 1.5; }
+
+  .cert-section {
+    margin-top: 48px;
+    padding: 32px;
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    background: var(--bg-card);
+  }
+  .cert-head {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 24px;
+    align-items: end;
+    margin-bottom: 28px;
+    padding-bottom: 20px;
+    border-bottom: 1px dashed var(--border);
+  }
+  .cert-head h3 {
+    font-size: 1.5rem;
+    margin: 0 0 6px;
+  }
+  .cert-head .spine {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .cert-metric-tile {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 12px 16px;
+    background: var(--bg);
+    text-align: right;
+    min-width: 160px;
+  }
+  .cert-metric-tile .num {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: var(--heading);
+    line-height: 1.1;
+  }
+  .cert-metric-tile .label {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .cert-metric-tile .delta { font-family: var(--mono); font-size: 11px; margin-top: 4px; }
+  .cert-metric-tile .delta.up { color: var(--good); }
+  .cert-metric-tile .delta.down { color: var(--bad); }
+
+  .modules-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    margin: 4px 0 22px;
+  }
+  @media (max-width: 720px) { .modules-strip { grid-template-columns: repeat(3, 1fr); } }
+  .mod-cell {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px;
+    background: var(--bg);
+    text-align: center;
+  }
+  .mod-cell.flag { border-color: rgba(245, 158, 11, 0.45); background: rgba(245, 158, 11, 0.06); }
+  .mod-cell .m {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+  }
+  .mod-cell .v {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--heading);
+    font-size: 1.1rem;
+    line-height: 1.1;
+    margin-top: 2px;
+  }
+  .mod-cell.flag .v { color: var(--warn); }
+  .mod-cell.empty .v { color: var(--muted); font-weight: 400; }
+
+  .quote {
+    border-left: 3px solid var(--primary);
+    padding: 8px 14px;
+    margin: 0 0 12px;
+    color: var(--body);
+    font-style: italic;
+    background: rgba(59, 130, 246, 0.04);
+    border-radius: 0 6px 6px 0;
+  }
+  .quote .meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-style: normal;
+    margin-top: 6px;
+    display: block;
+  }
+
+  .actions { display: flex; flex-direction: column; gap: 10px; }
+  .action {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 14px;
+    align-items: start;
+    padding: 14px;
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--bg);
+  }
+  .size {
+    font-family: var(--mono);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 4px 8px;
+    border-radius: 6px;
+    align-self: start;
+    min-width: 38px;
+    text-align: center;
+  }
+  .size.s { background: rgba(52, 211, 153, 0.12); color: var(--good); border: 1px solid rgba(52, 211, 153, 0.32); }
+  .size.m { background: rgba(96, 165, 250, 0.12); color: var(--light); border: 1px solid rgba(96, 165, 250, 0.32); }
+  .size.l { background: rgba(245, 158, 11, 0.12); color: var(--warn); border: 1px solid rgba(245, 158, 11, 0.32); }
+  .action-text { font-size: 0.93rem; color: var(--body); line-height: 1.5; }
+  .action-text strong { color: var(--heading); font-weight: 600; }
+
+  ul, ol { margin: 0 0 16px; padding-left: 22px; }
+  li { margin-bottom: 8px; line-height: 1.55; }
+
+  .timeline {
+    display: grid; grid-template-columns: auto 1fr; gap: 22px;
+  }
+  .timeline-tag {
+    font-family: var(--mono);
+    font-size: 11px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--light);
+    padding-top: 14px;
+  }
+  .timeline-block {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px;
+    background: var(--bg-card);
+    margin-bottom: 18px;
+  }
+  .timeline-block h4 {
+    font-family: var(--display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--heading);
+    margin: 0 0 12px;
+  }
+
+  .gap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 16px;
+  }
+
+  footer {
+    padding: 56px 0 80px;
+    border-top: 1px solid var(--border);
+    color: var(--muted);
+    font-size: 0.88rem;
+  }
+  footer a {
+    color: var(--light);
+    text-decoration: none;
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    border-bottom: 1px solid transparent;
+    transition: border-color 200ms ease;
+  }
+  footer a:hover { border-bottom-color: var(--light); }
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+  }
+  @media (max-width: 720px) { .footer-grid { grid-template-columns: 1fr; } }
+  .footer-links { display: flex; gap: 16px; flex-wrap: wrap; }
+
+  .reveal { opacity: 0; transform: translateY(16px); transition: opacity 600ms ease, transform 600ms ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+
+  code {
+    font-family: var(--mono);
+    font-size: 0.85em;
+    background: rgba(96, 165, 250, 0.10);
+    color: var(--light);
+    padding: 2px 6px;
+    border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+<div class="progress-bar" id="progressBar"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">Product School &middot; Course Portfolio Assessment</span>
+    <div class="nav-links">
+      <a class="nav-link" href="#why">Why</a>
+      <a class="nav-link" href="#pipeline">Pipeline</a>
+      <a class="nav-link" href="#vibe">Vibe Coding</a>
+      <a class="nav-link" href="#pm">AI PM</a>
+      <a class="nav-link" href="#strategy">AI Strategy</a>
+      <a class="nav-link" href="#patterns">Patterns</a>
+      <a class="nav-link" href="#backlog">Backlog</a>
+      <a class="nav-link" href="#gaps">Gaps</a>
+    </div>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <div class="eyebrow">Portfolio Assessment &middot; 2026-W22</div>
+    <h1>Three certifications, one library, one feedback loop</h1>
+    <p class="lede">
+      The library is now living: market signal flows in from external feeds, performance signal flows in from cohort feedback, and both pair against the canonical course packages to inform editorial decisions. This assessment is the synthesis layer &mdash; what the data is telling us about each certification this week, what to do about it, and what we still cannot measure.
+    </p>
+    <div class="stats-strip">
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Certifications</div></div>
+      <div class="stat"><div class="stat-num">18</div><div class="stat-label">Modules</div></div>
+      <div class="stat"><div class="stat-num">33</div><div class="stat-label">Atoms</div></div>
+      <div class="stat"><div class="stat-num">25</div><div class="stat-label">Feedback records (W22)</div></div>
+      <div class="stat"><div class="stat-num">1</div><div class="stat-label">Module flagged</div></div>
+      <div class="stat"><div class="stat-num">5</div><div class="stat-label">External feeds live</div></div>
+    </div>
+  </div>
+</header>
+
+<section class="reveal" id="why">
+  <div class="container">
+    <div class="section-eyebrow">1 &middot; Why this assessment exists</div>
+    <h2>Courses age fast in AI. Without a feedback loop, content drifts away from what students actually need.</h2>
+    <p class="section-lede">
+      A static curriculum, however well designed, is a snapshot. The pace of AI tooling, the framings learners arrive with, and the patterns instructors notice in the room all change quarter over quarter. The library has been re-architected so it can refresh itself: external trend signal flows in from public feeds, performance signal flows in from cohort feedback, and both pair against the canonical course packages to inform editorial decisions.
+    </p>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-eyebrow">The premise</div>
+        <h3>Three loops, one library</h3>
+        <p>Generate, Evaluate, Distribute, Observe &mdash; the CDLC. Until last week the Observe loop was the missing piece: we shipped content into the world but did not bring its performance back in. With the feedback pipeline live, the loop closes.</p>
+        <p>The certifications no longer have to wait for an annual revision. A module can be flagged, ticketed, and revised inside a single cohort cycle.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">What this doc is</div>
+        <h3>The synthesis layer above the digests</h3>
+        <p>Two digests already exist as machine-friendly artifacts: <code>outputs/trends/latest.md</code> for external signal and <code>outputs/feedback/latest.md</code> for cohort signal. They are detailed and stable.</p>
+        <p>This assessment is the executive-readable layer above them. It pulls the headline numbers, threads them against the canonical packages, and produces specific decisions a course owner can act on this week.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" id="pipeline">
+  <div class="container">
+    <div class="section-eyebrow">2 &middot; The Living Library today</div>
+    <h2>What is flowing, what is partial, what is pending</h2>
+    <p class="section-lede">
+      Five external feeds are live. The feedback pipeline is wired and running on a CSV fallback. The one outstanding decision is which underlying data store backs the Looker Studio dashboard so the live connector can replace the manual export.
+    </p>
+    <div class="pipeline-grid">
+      <div class="pipe-card">
+        <div class="pipe-row"><span class="pipe-name">External RSS feeds</span><span class="status good">Live</span></div>
+        <div class="pipe-desc">Lenny's Newsletter, Elena Verna, Andrew Chen, Reddit r/ProductManagement, Reddit r/artificial, Product School Product Podcast (BuzzSprout). Daily ingest, weekly trends digest.</div>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-row"><span class="pipe-name">X (Twitter) signal</span><span class="status warn">Manual CSV</span></div>
+        <div class="pipe-desc">No reliable public RSS. CSV path enabled, four ingestion options documented in <code>docs/x-ingestion.md</code>. Awaiting decision on automated source.</div>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-row"><span class="pipe-name">Feedback ingest</span><span class="status warn">CSV fallback</span></div>
+        <div class="pipe-desc">Daily ingest from <code>data/feedback.csv</code>. Live connectors for Sheet / BigQuery / GA4 stubbed pending dashboard owner confirmation of the underlying store.</div>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-row"><span class="pipe-name">Trends digest</span><span class="status good">Live</span></div>
+        <div class="pipe-desc">Monday cron, scans every external source, surfaces newly-emerging, rising, and sustained n-grams. Output at <code>outputs/trends/YYYY-Www.md</code>.</div>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-row"><span class="pipe-name">Feedback digest</span><span class="status good">Live</span></div>
+        <div class="pipe-desc">Monday cron. Cert snapshot, module heatmap, top quotes, instructor highlights, action signals. Output at <code>outputs/feedback/YYYY-Www.md</code>.</div>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-row"><span class="pipe-name">Course assessment</span><span class="status warn">Hand-curated</span></div>
+        <div class="pipe-desc">This document. Synthesizes both digests. A future <code>scripts/generate_course_assessment.py</code> will regenerate the per-cert sections automatically.</div>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-row"><span class="pipe-name">Cert hub HTMLs</span><span class="status good">Live</span></div>
+        <div class="pipe-desc">Three single-file shareable hubs at <code>outputs/certifications/&lt;cert&gt;/content-overview.html</code>. Currently static; Phase 2 will add live NPS badges per module.</div>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-row"><span class="pipe-name">Revision queue</span><span class="status bad">Phase 3</span></div>
+        <div class="pipe-desc">Auto-route an action signal into a revision-needed source record under <code>sources/internal/revision-queue/</code> when a module sustains a low NPS. Closes the CDLC loop end to end.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" id="vibe">
+  <div class="container">
+    <div class="section-eyebrow">3 &middot; Per-cert deep dive</div>
+    <h2>Three certifications, three different signals</h2>
+    <p class="section-lede">
+      Each section pairs the canonical package with this week's feedback (W22). Quotes and metrics are pulled from <code>outputs/feedback/2026-W22.md</code>. Recommendations are sized S (under a day), M (one to two weeks), L (one to two cohorts to validate).
+    </p>
+
+    <!-- AI VIBE CODING -->
+    <div class="cert-section">
+      <div class="cert-head">
+        <div>
+          <h3>AI Vibe Coding</h3>
+          <div class="spine">Spine &middot; Vibe &middot; Confidence Line &middot; Pre-work + 6 modules</div>
+        </div>
+        <div class="cert-metric-tile">
+          <div class="num">7.67</div>
+          <div class="label">NPS &middot; W22</div>
+          <div class="delta up">+0.92 vs trailing 4w</div>
+        </div>
+      </div>
+
+      <div class="card-eyebrow">Module heatmap (W22 NPS)</div>
+      <div class="modules-strip">
+        <div class="mod-cell"><div class="m">M1</div><div class="v">9.5</div></div>
+        <div class="mod-cell"><div class="m">M2</div><div class="v">7.0</div></div>
+        <div class="mod-cell flag"><div class="m">M3</div><div class="v">5.5</div></div>
+        <div class="mod-cell"><div class="m">M4</div><div class="v">9.0</div></div>
+        <div class="mod-cell empty"><div class="m">M5</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M6</div><div class="v">&mdash;</div></div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h3>What is working</h3>
+          <p>The Confidence Line framing lands. Module 1 and Module 4 are the strongest of the cert this week, and the qualitative signal points at the same atoms instructors had hoped would carry weight: the Confidence Line, the trust-gap framework, and the Lovable-as-product-configuration story.</p>
+          <div class="quote">Loved the framing of vibe coding as a Confidence Line &mdash; gave me the language I was missing.<span class="meta">2026-W22 cohort 3 &middot; M1</span></div>
+          <div class="quote">Best module so far &mdash; the trust-gap framework is reusable across products I'm building today.<span class="meta">2026-W22 cohort 3 &middot; M4</span></div>
+        </div>
+        <div>
+          <h3>Where it is struggling</h3>
+          <p>Module 3 has been below NPS 7.0 for two consecutive weeks across two different cohorts. The pattern is consistent: the agent-wiring demo is fragile, the eval scaffolding section is too dense for the time allocated, and recovery from a broken demo eats the rest of the session.</p>
+          <div class="quote">Confusing &mdash; the agent wiring example broke twice and we didn't recover the time.<span class="meta">2026-W22 cohort 3 &middot; M3</span></div>
+          <div class="quote">Section on confidence rituals landed; the broken agent demo at minute 38 cost us momentum. Recommend adding a fallback recording.<span class="meta">2026-W22 cohort 3 instructor &middot; M3</span></div>
+          <p>This is the only module in the entire portfolio currently flagged in the action signals.</p>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 28px;">Recommended actions</h3>
+      <div class="actions">
+        <div class="action"><span class="size s">S</span><div class="action-text"><strong>Ship a fallback recording for the M3 agent-wiring demo.</strong> The instructor explicitly recommended this. Removes the failure mode in the next cohort run. Owner: course owner. Cost: under one day.</div></div>
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Pacing audit on M3.</strong> Two students cited density and speed; one cited recovery time after the demo break. Reallocate 8 to 10 minutes from the eval scaffolding deep-dive into a guided walk-through. Owner: course author + instructor.</div></div>
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Promote the Confidence Line atom to portfolio level.</strong> It is doing the same job that <code>juno-pm-throughline</code> does in AI PM. Make it a reusable spine atom, not just a Vibe Coding atom.</div></div>
+        <div class="action"><span class="size l">L</span><div class="action-text"><strong>Ship a "minute 38" rehearsal kit for instructors.</strong> Generalize the broken-demo recovery into a published instructor pattern with rehearsed fallback paths for every live-coding moment in M3.</div></div>
+      </div>
+
+      <h3 style="margin-top: 24px;">Open questions</h3>
+      <ul>
+        <li>Are M5 and M6 silent because nothing is wrong or because the survey is being collected before they are taught? Confirm the data flow.</li>
+        <li>Does the M3 dip persist when the same instructor teaches twice, or does it correlate with instructor pairings?</li>
+      </ul>
+    </div>
+
+    <!-- AI PRODUCT MANAGEMENT -->
+    <div class="cert-section" id="pm">
+      <div class="cert-head">
+        <div>
+          <h3>AI Product Management</h3>
+          <div class="spine">Spine &middot; Bet &middot; Decide &middot; Specify &middot; Trust &middot; Orchestrate &middot; Prove</div>
+        </div>
+        <div class="cert-metric-tile">
+          <div class="num">8.50</div>
+          <div class="label">NPS &middot; W22</div>
+          <div class="delta up">+1.17 vs trailing 4w</div>
+        </div>
+      </div>
+
+      <div class="card-eyebrow">Module heatmap (W22 NPS)</div>
+      <div class="modules-strip">
+        <div class="mod-cell"><div class="m">M1</div><div class="v">9.5</div></div>
+        <div class="mod-cell"><div class="m">M2</div><div class="v">8.0</div></div>
+        <div class="mod-cell"><div class="m">M3</div><div class="v">7.0</div></div>
+        <div class="mod-cell empty"><div class="m">M4</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M5</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M6</div><div class="v">&mdash;</div></div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h3>What is working</h3>
+          <p>The Juno PM throughline is clearly load-bearing. Multiple students are already using its framings ("prompting as product configuration") in their own teams. Module 1 is the strongest of the cert. The decision matrix in M2 lands cleanly.</p>
+          <div class="quote">Prompting-as-product-configuration is now a phrase I'm using with my engineers &mdash; clear win.<span class="meta">2026-W22 cohort 7 &middot; M1</span></div>
+          <div class="quote">Excellent. The Juno PM throughline made every later module easier to follow.<span class="meta">2026-W22 cohort 7 &middot; M1</span></div>
+        </div>
+        <div>
+          <h3>Where it is struggling</h3>
+          <p>Two specific frictions, both small, both fixable. M2's autonomy lens is unclear and instructors are observing the same clarifying question land repeatedly. M3's RAG architecture content is dense without scaffolding to compare options side by side.</p>
+          <div class="quote">The decision matrix is great. The autonomy lens needs a clearer worked example.<span class="meta">2026-W22 cohort 7 &middot; M2</span></div>
+          <div class="quote">Decision matrix landed without friction. Autonomy lens needs a sharper worked example &mdash; multiple students asked the same clarifying question.<span class="meta">2026-W22 cohort 7 instructor &middot; M2</span></div>
+          <div class="quote">Useful but the RAG architecture choices were dense. Would benefit from a comparison table.<span class="meta">2026-W22 cohort 7 &middot; M3</span></div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 28px;">Recommended actions</h3>
+      <div class="actions">
+        <div class="action"><span class="size s">S</span><div class="action-text"><strong>Add a worked example to the autonomy lens in M2.</strong> Both student and instructor flagged the same gap on the same module. Smallest, highest-confidence revision in the portfolio this week.</div></div>
+        <div class="action"><span class="size s">S</span><div class="action-text"><strong>Add a comparison table to the M3 RAG architecture section.</strong> Student requested it explicitly. Cost: a few hours; effect: removes the only friction the module currently has.</div></div>
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Surface the trust-gap atom across both AI PM M4 and AI Vibe Coding M4.</strong> They are doing the same conceptual work; cross-link the deck pattern.</div></div>
+        <div class="action"><span class="size l">L</span><div class="action-text"><strong>Add module-deep-link routing on the AI PM hub.</strong> Today every module card links to the cert root. Wiring per-module destinations would let students return to a specific module after class and would let this assessment link directly to the friction points cited above.</div></div>
+      </div>
+
+      <h3 style="margin-top: 24px;">Open questions</h3>
+      <ul>
+        <li>Does the autonomy lens friction predict M5 friction (where autonomy becomes the central topic)? Worth instrumenting before M5 lands in the next cohort cycle.</li>
+        <li>Is the M3 density a content issue or a sequencing issue? Compare M3 NPS in cohorts that complete the AI PRD homework before vs after the live session.</li>
+      </ul>
+    </div>
+
+    <!-- AI PRODUCT STRATEGY -->
+    <div class="cert-section" id="strategy">
+      <div class="cert-head">
+        <div>
+          <h3>AI Product Strategy</h3>
+          <div class="spine">Spine &middot; Bet &middot; Moat &middot; Margin &middot; Contract &middot; Guardrails &middot; Pitch</div>
+        </div>
+        <div class="cert-metric-tile">
+          <div class="num">9.33</div>
+          <div class="label">NPS &middot; W22</div>
+          <div class="delta up">+1.83 vs trailing 4w</div>
+        </div>
+      </div>
+
+      <div class="card-eyebrow">Module heatmap (W22 NPS)</div>
+      <div class="modules-strip">
+        <div class="mod-cell"><div class="m">M1</div><div class="v">9.0</div></div>
+        <div class="mod-cell"><div class="m">M2</div><div class="v">9.5</div></div>
+        <div class="mod-cell empty"><div class="m">M3</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M4</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M5</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M6</div><div class="v">&mdash;</div></div>
+      </div>
+
+      <div class="two-col">
+        <div>
+          <h3>What is working</h3>
+          <p>The strongest performer in the portfolio this week. The Five AI Value Archetypes and the M2 combination of Data Flywheel + Model Dependency Kill-Switch are clearly the load-bearing atoms; both students and instructors converged on naming them as the standout content.</p>
+          <div class="quote">The Five AI Value Archetypes are the cleanest framing I've seen for AI bets.<span class="meta">2026-W22 cohort 2 &middot; M1</span></div>
+          <div class="quote">Best module. Data flywheel + kill-switch combined turned a fuzzy moat conversation into a concrete artifact.<span class="meta">2026-W22 cohort 2 &middot; M2</span></div>
+          <div class="quote">Engagement was high through the entire session. Five archetypes resonated more than I expected &mdash; keep as the spine.<span class="meta">2026-W22 cohort 2 instructor &middot; M1</span></div>
+        </div>
+        <div>
+          <h3>Where it is struggling</h3>
+          <p>Nothing visibly under threshold this week. The W21 cohort-level note flagged M4 (the contract) as the weakest module: trust contract dragged on cost discussion. That has not yet been validated in a follow-up cohort, but it is the live hypothesis to test next.</p>
+          <div class="quote">Cohort tracking on plan. Strongest module M2; weakest M4 (trust contract dragged on cost discussion).<span class="meta">2026-W21 cohort 1 cohort-level note</span></div>
+        </div>
+      </div>
+
+      <h3 style="margin-top: 28px;">Recommended actions</h3>
+      <div class="actions">
+        <div class="action"><span class="size s">S</span><div class="action-text"><strong>Promote the Five AI Value Archetypes atom in shareable assets.</strong> It is currently inside an M1 deck; lift it into a one-pager and a LinkedIn post template. Lowest-cost piece of thought leadership in the portfolio this week.</div></div>
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Instrument M4 for the next cohort.</strong> The W21 cohort-level note on the trust contract dragging the margin discussion is a hypothesis, not yet validated. Flag M4 for the next instructor reflection prompt and a focused student question.</div></div>
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Cross-link the Reliability Contract and Confidence UX atoms with AI PM M4 and AI Vibe Coding M4.</strong> Three different modules across the portfolio are teaching trust as a deliverable. Make that consistency visible to learners and to instructors.</div></div>
+        <div class="action"><span class="size l">L</span><div class="action-text"><strong>Mirror the Vibe Coding shareable-deck pattern.</strong> AI PM has live GitHub Pages, AI PS today links only to the source repo. Standing up a shareable deck mirror would close the parity gap and let the AI PS hub link directly to per-module decks.</div></div>
+      </div>
+
+      <h3 style="margin-top: 24px;">Open questions</h3>
+      <ul>
+        <li>Does the M2 strength compound into M3 (the margin module that builds on the moat)? The data flywheel is supposed to feed margin economics; check whether students see that thread.</li>
+        <li>Is the audience self-selecting strongly? AI PS NPS this week is markedly higher than the other two certs. Is that a real content effect or a sample-size effect?</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" id="patterns">
+  <div class="container">
+    <div class="section-eyebrow">4 &middot; Cross-cutting patterns</div>
+    <h2>What we learn from looking at all three together</h2>
+    <p class="section-lede">
+      Three signals show up only when the certifications are read as a portfolio, not as three independent products.
+    </p>
+    <div class="two-col">
+      <div class="card">
+        <div class="card-eyebrow">Pattern 1 &middot; Sequencing</div>
+        <h3>Module 3 is where density spikes</h3>
+        <p>In two of three certs this week, M3 carries the heaviest technical lift &mdash; agent wiring + eval scaffolding in Vibe Coding, RAG architecture decisions in AI PM. AI PS M3 (the margin module) has not yet generated feedback but is structurally the same kind of content density.</p>
+        <p>Hypothesis: middle modules are systematically asked to ship the heaviest technical content while still introducing learners to the cert's central artifact. This is a sequencing question, not a content quality question.</p>
+        <p><strong>Recommendation:</strong> a portfolio-level pacing audit on every M3 before next cohort.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Pattern 2 &middot; Atoms</div>
+        <h3>Throughline atoms are doing more work than we credit them for</h3>
+        <p><code>juno-pm-throughline</code>, <code>ai-product-management-execution-arc</code>, and <code>ai-product-strategy-six-questions</code> appear in every module of their respective certs. Vibe Coding's Confidence Line plays the same role.</p>
+        <p>Students consistently cite these throughlines as the single most useful piece of the cert. Instructors describe them as the spine that keeps a session navigable.</p>
+        <p><strong>Recommendation:</strong> promote "throughline" as a first-class atom category. Treat them as portfolio-level assets, not per-cert decoration.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Pattern 3 &middot; Trust as a portfolio theme</div>
+        <h3>Three M4s are teaching the same lesson</h3>
+        <p>AI Vibe Coding M4 (close the trust gaps), AI PM M4 (design AI-native UX, close hallucination + black-box + control gaps), and AI PS M4 (the contract &mdash; reliability, golden datasets, confidence UX) are three different framings of one underlying skill: making the AI product trustworthy enough to ship.</p>
+        <p>Today this is invisible to learners and to instructors. The cross-link does not exist in any deck.</p>
+        <p><strong>Recommendation:</strong> a shared "Trust Layer" atom set referenced from all three M4s. Single source of truth for golden datasets, reliability contracts, confidence UX patterns.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Pattern 4 &middot; Feedback asymmetry</div>
+        <h3>Rich student feedback. Sparse instructor reflections. Almost no completion data.</h3>
+        <p>This week's corpus skews heavily toward student NPS + comments. Instructor reflections are present but thin (three records this week). Cohort-level metrics are present but lag a week. Post-cert artifact submissions (the actual proof of learning) are not in the corpus at all.</p>
+        <p><strong>Recommendation:</strong> instrument the missing legs. See section 6 below.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" id="backlog">
+  <div class="container">
+    <div class="section-eyebrow">5 &middot; The backlog (sequenced)</div>
+    <h2>What to do, in order</h2>
+    <p class="section-lede">
+      Sized in three horizons. The top horizon is what we do this week. The middle horizon is what we ship inside a cohort cycle. The bottom horizon is the next quarter of work.
+    </p>
+
+    <div class="timeline">
+      <div class="timeline-tag">Now &middot; this week</div>
+      <div>
+        <div class="timeline-block">
+          <h4>Unblock the live feedback connector</h4>
+          <p>The pipeline is running on a CSV fallback. The single missing input is a 30-second answer from the dashboard owner: which underlying store does the Looker Studio dashboard read from? Sheet, BigQuery, GA4, or other? Once known, the right connector flips from stub to live and the daily ingest is no longer manual. This is the smallest action with the largest leverage in the portfolio right now.</p>
+        </div>
+        <div class="timeline-block">
+          <h4>Patch the four S-sized course revisions</h4>
+          <p>Vibe Coding M3 fallback recording. AI PM M2 autonomy-lens worked example. AI PM M3 RAG comparison table. AI PS M1 Five-Archetypes one-pager promotion. Together: under three days of work, four user-facing improvements, all grounded in this week's qualitative feedback.</p>
+        </div>
+      </div>
+
+      <div class="timeline-tag">Next &middot; 2 to 4 weeks</div>
+      <div>
+        <div class="timeline-block">
+          <h4>Phase 2: live NPS badges on the cert hubs</h4>
+          <p>Each module card on the three cert hubs renders a small live NPS + freshness badge that pulls from the latest feedback digest. Visible to anyone we share the hub with; turns the hub from a static brochure into a living dashboard.</p>
+        </div>
+        <div class="timeline-block">
+          <h4>Module deep-link routing</h4>
+          <p>Today AI PM module cards link to the cert root and AI PS cards link to the source repo. Wire per-module destinations so anyone (instructor, student, this assessment) can deep-link to a specific module's deck or notes.</p>
+        </div>
+        <div class="timeline-block">
+          <h4>Trends-to-cert overlay</h4>
+          <p>Cross-reference the weekly external trends digest with each cert's atom catalog. When a "rising" or "newly emerging" phrase touches a known atom, surface it as a content-update suggestion. When a phrase has no atom mapping, surface it as a content-gap suggestion. Closes the loop between market signal and curriculum.</p>
+        </div>
+      </div>
+
+      <div class="timeline-tag">Later &middot; this quarter</div>
+      <div>
+        <div class="timeline-block">
+          <h4>Phase 3: the revision queue</h4>
+          <p>When a module sustains a low NPS for the configured window, auto-create a revision-needed source record under <code>sources/internal/revision-queue/</code>. Routed to the package owner via frontmatter. Reviewable in the same triage rhythm as external sources. Closes the CDLC loop end to end.</p>
+        </div>
+        <div class="timeline-block">
+          <h4>Generated assessment</h4>
+          <p>This document becomes a generated artifact. <code>scripts/generate_course_assessment.py</code> regenerates sections 3 and 4 directly from the latest feedback digest, leaving sections 5 and 6 as human-edited synthesis. Output at <code>outputs/assessments/YYYY-Www.html</code>.</p>
+        </div>
+        <div class="timeline-block">
+          <h4>Throughline atom promotion + Trust Layer</h4>
+          <p>Promote throughline atoms (Confidence Line, Juno PM, Six Questions, Execution Arc) to portfolio-level. Stand up the shared Trust Layer atom set referenced across the three M4s. Both turn three certifications into one library.</p>
+        </div>
+        <div class="timeline-block">
+          <h4>Mirror the Vibe Coding deck pattern for AI PM and AI PS</h4>
+          <p>AI Vibe Coding has six locally-mirrored shareable decks. AI PM has a deployed GitHub Pages site. AI PS only has a source repo. Bring all three to parity so every cert offers the same shareability experience and the same instrument-for-feedback path.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="reveal" id="gaps">
+  <div class="container">
+    <div class="section-eyebrow">6 &middot; Instrumentation gaps</div>
+    <h2>What we still cannot measure</h2>
+    <p class="section-lede">
+      The feedback pipeline closed the obvious gap (we can now see what students and instructors think, week over week). Five gaps remain. Each one constrains what this assessment can confidently say.
+    </p>
+    <div class="gap-grid">
+      <div class="card">
+        <div class="card-eyebrow">Gap 1</div>
+        <h3>Time-on-slide / time-on-module</h3>
+        <p>We can see NPS but not engagement. We do not know if students stay on a deck or skim. Closing this gap would tell us whether low NPS is content-quality or pacing-related, which would have changed this week's M3 recommendations.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Gap 2</div>
+        <h3>Post-cert artifact submissions</h3>
+        <p>The certifications all promise a forked GitHub repo as the deliverable. We do not currently track whether that repo exists, what is in it, or how often it is updated. The artifact is the proof of learning &mdash; that is the metric that should govern the portfolio.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Gap 3</div>
+        <h3>Cohort-to-cohort longitudinal NPS</h3>
+        <p>We can compare this week to the trailing 4-week mean, but we cannot confidently track a single cohort's trajectory across the cert. Closing this gap requires consistent <code>cohort_id</code> across every survey response.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Gap 4</div>
+        <h3>Instructor pairing performance</h3>
+        <p>The same module taught by two different instructor pairs almost certainly produces different NPS. We do not yet attribute feedback to instructor combos. Closing this gap would let us learn from our best teaching pairs, not just our best content.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Gap 5</div>
+        <h3>External-trend to cert-relevance overlay</h3>
+        <p>The trends digest tells us what is rising in the market. The feedback digest tells us how our content is landing. We do not yet automatically join the two: which rising market phrases have no atom mapping in our library?</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Gap 6</div>
+        <h3>Enterprise-vs-consumer split</h3>
+        <p>Enterprise workshops will repackage the same atoms with a different audience. Today our feedback corpus is consumer-cohort-only. As enterprise pilots come online, the same comment ("too dense") will mean very different things in those rooms.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        Generated as a synthesis of <code>outputs/feedback/latest.md</code>, <code>outputs/trends/</code>, and the canonical packages under <code>library/packages/certifications/</code>.<br>
+        Refresh cadence: after every Monday digest, and before any roadmap conversation about course revisions.<br>
+        Currently hand-curated; will become a generated artifact once the live feedback connector is wired (see <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/docs/feedback-ingestion.md" target="_blank" rel="noopener">docs/feedback-ingestion.md</a>).
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/outputs/certifications/ai-vibe-coding/content-overview.html" target="_blank" rel="noopener">AI Vibe Coding hub &rarr;</a>
+        <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/outputs/certifications/ai-product-management/content-overview.html" target="_blank" rel="noopener">AI Product Management hub &rarr;</a>
+        <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/outputs/certifications/ai-product-strategy/content-overview.html" target="_blank" rel="noopener">AI Product Strategy hub &rarr;</a>
+        <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/outputs/feedback/latest.md" target="_blank" rel="noopener">Latest feedback digest &rarr;</a>
+        <a href="https://github.com/Product-School-Platform/ps-content-library" target="_blank" rel="noopener">Source repository &rarr;</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const bar = document.getElementById('progressBar');
+  const updateBar = () => {
+    const h = document.documentElement;
+    const max = h.scrollHeight - h.clientHeight;
+    bar.style.width = (max > 0 ? (h.scrollTop / max) * 100 : 0) + '%';
+  };
+  document.addEventListener('scroll', updateBar, { passive: true });
+  updateBar();
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+</script>
+</body>
+</html>
