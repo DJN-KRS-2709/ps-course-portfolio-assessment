@@ -3,16 +3,16 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Course Portfolio Assessment - Product School AI Certifications</title>
-<meta name="description" content="Synthesis of Product School's three AI certifications - AI Vibe Coding, AI Product Management, AI Product Strategy - pairing weekly student and instructor feedback with the canonical course packages to produce sized, sequenced editorial decisions.">
+<title>Course Portfolio Assessment - Product School Certifications</title>
+<meta name="description" content="Synthesis of Product School's full certification portfolio - seven certifications across AI and core product programs - pairing weekly student and instructor feedback with the canonical course packages to produce sized, sequenced editorial decisions.">
 <meta name="author" content="Product School Content Library">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Course Portfolio Assessment - Product School AI Certifications">
-<meta property="og:description" content="Three certifications, one library, one feedback loop. Per-cert deep dive, cross-cutting patterns, sequenced backlog, and instrumentation gaps.">
+<meta property="og:title" content="Course Portfolio Assessment - Product School Certifications">
+<meta property="og:description" content="Seven certifications, one library, one feedback loop. Per-cert deep dive, cross-cutting patterns, sequenced backlog, and instrumentation gaps.">
 <meta property="og:site_name" content="Product School Content Library">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Course Portfolio Assessment - Product School AI Certifications">
-<meta name="twitter:description" content="Three certifications, one library, one feedback loop. Per-cert deep dive, cross-cutting patterns, sequenced backlog.">
+<meta name="twitter:title" content="Course Portfolio Assessment - Product School Certifications">
+<meta name="twitter:description" content="Seven certifications, one library, one feedback loop. Per-cert deep dive, cross-cutting patterns, sequenced backlog.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Lato:wght@300;400;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -450,6 +450,44 @@
     padding: 2px 6px;
     border-radius: 4px;
   }
+
+  .badge {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-left: 10px;
+    vertical-align: middle;
+  }
+  .badge.canonical { background: rgba(52, 211, 153, 0.10); color: var(--good); border: 1px solid rgba(52, 211, 153, 0.32); }
+  .badge.tracked   { background: rgba(245, 158, 11, 0.10); color: var(--warn); border: 1px solid rgba(245, 158, 11, 0.32); }
+  .badge.tier      { background: rgba(96, 165, 250, 0.10); color: var(--light); border: 1px solid rgba(96, 165, 250, 0.28); }
+
+  .cert-divider {
+    margin: 56px 0 24px;
+    padding: 18px 22px;
+    border-left: 3px solid var(--light);
+    background: rgba(96, 165, 250, 0.06);
+    border-radius: 0 8px 8px 0;
+  }
+  .cert-divider h3 {
+    font-family: var(--display);
+    color: var(--heading);
+    margin: 0 0 4px;
+    font-size: 1.05rem;
+  }
+  .cert-divider p {
+    margin: 0;
+    color: var(--body);
+    font-size: 0.92rem;
+    line-height: 1.5;
+  }
+
+  .cert-section.compact { padding: 24px 28px; }
+  .cert-section.compact .cert-head { margin-bottom: 18px; padding-bottom: 14px; }
+  .cert-section.compact h3 { font-size: 1.25rem; }
 </style>
 </head>
 <body>
@@ -461,9 +499,7 @@
     <div class="nav-links">
       <a class="nav-link" href="#why">Why</a>
       <a class="nav-link" href="#pipeline">Pipeline</a>
-      <a class="nav-link" href="#vibe">Vibe Coding</a>
-      <a class="nav-link" href="#pm">AI PM</a>
-      <a class="nav-link" href="#strategy">AI Strategy</a>
+      <a class="nav-link" href="#certs">Certifications</a>
       <a class="nav-link" href="#patterns">Patterns</a>
       <a class="nav-link" href="#backlog">Backlog</a>
       <a class="nav-link" href="#gaps">Gaps</a>
@@ -474,16 +510,16 @@
 <header class="hero">
   <div class="container hero-inner">
     <div class="eyebrow">Portfolio Assessment &middot; 2026-W22</div>
-    <h1>Three certifications, one library, one feedback loop</h1>
+    <h1>Seven certifications, one library, one feedback loop</h1>
     <p class="lede">
-      The library is now living: market signal flows in from external feeds, performance signal flows in from cohort feedback, and both pair against the canonical course packages to inform editorial decisions. This assessment is the synthesis layer &mdash; what the data is telling us about each certification this week, what to do about it, and what we still cannot measure.
+      The library is now living: market signal flows in from external feeds, performance signal flows in from cohort feedback across the full Product School portfolio, and both pair against the canonical course packages to inform editorial decisions. This assessment is the synthesis layer &mdash; what the data is telling us about each certification this week, what to do about it, and what we still cannot measure.
     </p>
     <div class="stats-strip">
-      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Certifications</div></div>
-      <div class="stat"><div class="stat-num">18</div><div class="stat-label">Modules</div></div>
-      <div class="stat"><div class="stat-num">33</div><div class="stat-label">Atoms</div></div>
-      <div class="stat"><div class="stat-num">25</div><div class="stat-label">Feedback records (W22)</div></div>
-      <div class="stat"><div class="stat-num">1</div><div class="stat-label">Module flagged</div></div>
+      <div class="stat"><div class="stat-num">7</div><div class="stat-label">Certifications</div></div>
+      <div class="stat"><div class="stat-num">42</div><div class="stat-label">Modules tracked</div></div>
+      <div class="stat"><div class="stat-num">39</div><div class="stat-label">Feedback records (W22)</div></div>
+      <div class="stat"><div class="stat-num">7</div><div class="stat-label">Cohorts active</div></div>
+      <div class="stat"><div class="stat-num">3</div><div class="stat-label">Modules flagged</div></div>
       <div class="stat"><div class="stat-num">5</div><div class="stat-label">External feeds live</div></div>
     </div>
   </div>
@@ -518,7 +554,7 @@
     <div class="section-eyebrow">2 &middot; The Living Library today</div>
     <h2>What is flowing, what is partial, what is pending</h2>
     <p class="section-lede">
-      Five external feeds are live. The feedback pipeline is wired and running on a CSV fallback. The one outstanding decision is which underlying data store backs the Looker Studio dashboard so the live connector can replace the manual export.
+      Five external feeds are live. The feedback pipeline is wired across all seven certifications and running on a CSV fallback. A single cert registry at <code>config/certifications.json</code> drives ingest, digest, and assessment &mdash; adding a new course is a 2-line edit. The one outstanding decision is which underlying data store backs the Looker Studio dashboard so the live connector can replace the manual export.
     </p>
     <div class="pipeline-grid">
       <div class="pipe-card">
@@ -546,8 +582,12 @@
         <div class="pipe-desc">This document. Synthesizes both digests. A future <code>scripts/generate_course_assessment.py</code> will regenerate the per-cert sections automatically.</div>
       </div>
       <div class="pipe-card">
-        <div class="pipe-row"><span class="pipe-name">Cert hub HTMLs</span><span class="status good">Live</span></div>
-        <div class="pipe-desc">Three single-file shareable hubs at <code>outputs/certifications/&lt;cert&gt;/content-overview.html</code>. Currently static; Phase 2 will add live NPS badges per module.</div>
+        <div class="pipe-row"><span class="pipe-name">Cert hub HTMLs</span><span class="status warn">3 of 7</span></div>
+        <div class="pipe-desc">Three single-file shareable hubs at <code>outputs/certifications/&lt;cert&gt;/content-overview.html</code> for the canonical AI certs. Tracked-only certs (PMC / PLC / DPM / PMM) get hubs as they canonicalise.</div>
+      </div>
+      <div class="pipe-card">
+        <div class="pipe-row"><span class="pipe-name">Cert registry</span><span class="status good">Live</span></div>
+        <div class="pipe-desc">Single source of truth at <code>config/certifications.json</code>. Drives ingest (slug normalization), digest (display order), and assessment (which sections render). Adding a cert is one entry.</div>
       </div>
       <div class="pipe-card">
         <div class="pipe-row"><span class="pipe-name">Revision queue</span><span class="status bad">Phase 3</span></div>
@@ -557,19 +597,24 @@
   </div>
 </section>
 
-<section class="reveal" id="vibe">
+<section class="reveal" id="certs">
   <div class="container">
     <div class="section-eyebrow">3 &middot; Per-cert deep dive</div>
-    <h2>Three certifications, three different signals</h2>
+    <h2>Seven certifications, three feedback patterns</h2>
     <p class="section-lede">
-      Each section pairs the canonical package with this week's feedback (W22). Quotes and metrics are pulled from <code>outputs/feedback/2026-W22.md</code>. Recommendations are sized S (under a day), M (one to two weeks), L (one to two cohorts to validate).
+      Each section pairs whatever the library knows about the cert (canonical packages where they exist; placeholder when they do not yet) with this week's feedback. Quotes and metrics are pulled from <code>outputs/feedback/2026-W22.md</code>. Recommendations are sized S (under a day), M (one to two weeks), L (one to two cohorts to validate).
     </p>
 
+    <div class="cert-divider">
+      <h3>Canonical certifications &middot; AI portfolio</h3>
+      <p>Three certifications with full canonical packages in <code>library/packages/certifications/</code>. Recommendations below are course-revision specific because the library owns the source.</p>
+    </div>
+
     <!-- AI VIBE CODING -->
-    <div class="cert-section">
+    <div class="cert-section" id="vibe">
       <div class="cert-head">
         <div>
-          <h3>AI Vibe Coding</h3>
+          <h3>AI Vibe Coding<span class="badge canonical">Canonical</span><span class="badge tier">Free</span></h3>
           <div class="spine">Spine &middot; Vibe &middot; Confidence Line &middot; Pre-work + 6 modules</div>
         </div>
         <div class="cert-metric-tile">
@@ -624,7 +669,7 @@
     <div class="cert-section" id="pm">
       <div class="cert-head">
         <div>
-          <h3>AI Product Management</h3>
+          <h3>AI Product Management<span class="badge canonical">Canonical</span><span class="badge tier">Paid</span></h3>
           <div class="spine">Spine &middot; Bet &middot; Decide &middot; Specify &middot; Trust &middot; Orchestrate &middot; Prove</div>
         </div>
         <div class="cert-metric-tile">
@@ -679,7 +724,7 @@
     <div class="cert-section" id="strategy">
       <div class="cert-head">
         <div>
-          <h3>AI Product Strategy</h3>
+          <h3>AI Product Strategy<span class="badge canonical">Canonical</span><span class="badge tier">Paid</span></h3>
           <div class="spine">Spine &middot; Bet &middot; Moat &middot; Margin &middot; Contract &middot; Guardrails &middot; Pitch</div>
         </div>
         <div class="cert-metric-tile">
@@ -728,42 +773,254 @@
         <li>Is the audience self-selecting strongly? AI PS NPS this week is markedly higher than the other two certs. Is that a real content effect or a sample-size effect?</li>
       </ul>
     </div>
+
+    <div class="cert-divider">
+      <h3>Tracked-only certifications &middot; Core product portfolio</h3>
+      <p>Four certifications where feedback flows in but the library does not yet hold canonical packages. Recommendations below are about <em>library actions</em> (what to package, instrument, or atomize) rather than course revisions. Promote any of these to canonical by adding a package under <code>library/packages/certifications/</code>.</p>
+    </div>
+
+    <!-- PRODUCT MANAGEMENT CERTIFICATE (PMC) -->
+    <div class="cert-section compact" id="pmc">
+      <div class="cert-head">
+        <div>
+          <h3>Product Management Certificate &middot; PMC<span class="badge tracked">Tracked-only</span><span class="badge tier">Paid</span></h3>
+          <div class="spine">Spine &middot; Discover &middot; Define &middot; Design &middot; Deliver &middot; Decide &middot; Drive &middot; (placeholder, packages forthcoming)</div>
+        </div>
+        <div class="cert-metric-tile">
+          <div class="num">7.17</div>
+          <div class="label">NPS &middot; W22</div>
+          <div class="delta up">+1.17 vs trailing 4w</div>
+        </div>
+      </div>
+      <div class="card-eyebrow">Module heatmap (W22 NPS)</div>
+      <div class="modules-strip">
+        <div class="mod-cell"><div class="m">M1</div><div class="v">8.5</div></div>
+        <div class="mod-cell"><div class="m">M2</div><div class="v">7.0</div></div>
+        <div class="mod-cell flag"><div class="m">M3</div><div class="v">5.5</div></div>
+        <div class="mod-cell"><div class="m">M4</div><div class="v">8.0</div></div>
+        <div class="mod-cell empty"><div class="m">M5</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M6</div><div class="v">&mdash;</div></div>
+      </div>
+      <div class="two-col">
+        <div>
+          <h3>What is working</h3>
+          <p>The flagship is still the flagship. M1's discovery framing is praised explicitly as the single most useful chapter learners have seen across PM courses. M4's metrics chapter is solid; learners are asking for an AI-metrics extension &mdash; a perfect cross-cert content opportunity.</p>
+          <div class="quote">Discovery framing is the single most useful chapter of any PM course I've taken.<span class="meta">2026-W22 PMC cohort 41 &middot; M1</span></div>
+          <div class="quote">Metrics chapter is solid. Would love a section on AI-product metrics specifically.<span class="meta">2026-W22 PMC cohort 41 &middot; M4</span></div>
+        </div>
+        <div>
+          <h3>Where it is struggling</h3>
+          <p>M3 (stakeholder management) is sustained-low. Both students and the instructor flagged the same root cause: the case studies are dated and reference org structures that have since restructured. This is a content-freshness issue, not a content-quality issue.</p>
+          <div class="quote">Stakeholder-management stories felt dated &mdash; referenced product orgs that have since restructured.<span class="meta">2026-W22 PMC cohort 41 &middot; M3</span></div>
+          <div class="quote">Stakeholder module needs a content refresh. The case studies are 3+ years old and students are calling it out.<span class="meta">2026-W22 PMC cohort 41 instructor &middot; M3</span></div>
+        </div>
+      </div>
+      <h3 style="margin-top: 24px;">Recommended library actions</h3>
+      <div class="actions">
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Add PMC as a canonical certification.</strong> Create <code>library/packages/certifications/product-management-certificate-*.md</code> per module. Promote it from tracked-only to canonical so revision recommendations have a concrete artifact to land in.</div></div>
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Refresh the M3 stakeholder case studies.</strong> Two cohorts in a row have flagged outdated org-structure references. Source 3-5 fresh 2025/2026 case studies from <code>sources/external/</code> (Lenny, Andrew Chen) and replace.</div></div>
+        <div class="action"><span class="size s">S</span><div class="action-text"><strong>Add a "PM metrics for AI products" mini-atom that PMC M4 can link to.</strong> Same mini-atom can be referenced from AI PM M3 (RAG cost / accuracy / speed trade-offs). Cross-cert reuse.</div></div>
+      </div>
+      <h3 style="margin-top: 20px;">Open questions</h3>
+      <ul>
+        <li>Is the M3 issue truly stakeholder-content quality, or is it cohort-level instructor variability? Need consistent instructor metadata.</li>
+        <li>How much of PMC overlaps with PLC vs how much is genuinely distinct? An atom-level audit would let us promote both certs to canonical with shared atoms instead of duplicated content.</li>
+      </ul>
+    </div>
+
+    <!-- PRODUCT LEADER CERTIFICATE (PLC) -->
+    <div class="cert-section compact" id="plc">
+      <div class="cert-head">
+        <div>
+          <h3>Product Leader Certificate &middot; PLC<span class="badge tracked">Tracked-only</span><span class="badge tier">Paid</span></h3>
+          <div class="spine">Spine &middot; Vision &middot; Strategy &middot; Org &middot; People &middot; Execution &middot; Influence &middot; (placeholder)</div>
+        </div>
+        <div class="cert-metric-tile">
+          <div class="num">8.50</div>
+          <div class="label">NPS &middot; W22</div>
+          <div class="delta up">+0.50 vs trailing 4w</div>
+        </div>
+      </div>
+      <div class="card-eyebrow">Module heatmap (W22 NPS)</div>
+      <div class="modules-strip">
+        <div class="mod-cell"><div class="m">M1</div><div class="v">9.0</div></div>
+        <div class="mod-cell"><div class="m">M2</div><div class="v">8.0</div></div>
+        <div class="mod-cell"><div class="m">M3</div><div class="v">8.0</div></div>
+        <div class="mod-cell"><div class="m">M4</div><div class="v">9.0</div></div>
+        <div class="mod-cell empty"><div class="m">M5</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M6</div><div class="v">&mdash;</div></div>
+      </div>
+      <div class="two-col">
+        <div>
+          <h3>What is working</h3>
+          <p>The strongest non-AI cert in the portfolio. Vision-setting (M1) and the people module (M4) both clear NPS 9. Learners are bringing the frameworks back to their teams the same week.</p>
+          <div class="quote">The vision-setting frameworks finally gave me language to use with my CEO.<span class="meta">2026-W22 PLC cohort 12 &middot; M1</span></div>
+          <div class="quote">The people module was excellent. I'm taking the 1:1 frame back to my team Monday.<span class="meta">2026-W22 PLC cohort 12 &middot; M4</span></div>
+        </div>
+        <div>
+          <h3>Where it could be sharper</h3>
+          <p>Not failing anywhere; the only consistent friction is dated examples. Students and instructors both unprompted asked for a 2026 AI-strategy lens layered into M2 (strategy). This is a portfolio-level content opportunity, not a module-level revision.</p>
+          <div class="quote">Strategy module is strong. Examples skewed toward late-stage; some early-stage cases would help.<span class="meta">2026-W22 PLC cohort 12 &middot; M2</span></div>
+          <div class="quote">Strategy frameworks land. Worth adding a 2026 AI-strategy lens &mdash; students asked unprompted twice.<span class="meta">2026-W22 PLC cohort 12 instructor &middot; M2</span></div>
+        </div>
+      </div>
+      <h3 style="margin-top: 24px;">Recommended library actions</h3>
+      <div class="actions">
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Add PLC as a canonical certification.</strong> Lift the strongest atoms (vision frameworks, 1:1 frame, org-design module) to <code>library/atoms/</code> first &mdash; PLC's strengths look reusable across thought leadership and enterprise workshops.</div></div>
+        <div class="action"><span class="size s">S</span><div class="action-text"><strong>Cross-link AI Product Strategy atoms into PLC M2.</strong> The Five AI Value Archetypes and Living Strategy Repo atoms already exist; surface them inside PLC's strategy module instead of building a new AI-strategy lens from scratch.</div></div>
+        <div class="action"><span class="size l">L</span><div class="action-text"><strong>Spin a "Product Leader for AI" portfolio bundle.</strong> The signal here (plus the matching signal in PMM and PMC) suggests senior PMs want an AI overlay on every existing cert, not separate AI products. The bundle is the right packaging.</div></div>
+      </div>
+      <h3 style="margin-top: 20px;">Open questions</h3>
+      <ul>
+        <li>What carries from PLC strengths into PMC weaknesses? PLC M3 (org) is praised; PMC M3 (stakeholder) is flagged. Same conceptual territory, very different reception.</li>
+      </ul>
+    </div>
+
+    <!-- DATA PRODUCT MANAGER CERTIFICATE (DPM) -->
+    <div class="cert-section compact" id="dpm">
+      <div class="cert-head">
+        <div>
+          <h3>Data Product Manager Certificate &middot; DPM<span class="badge tracked">Tracked-only</span><span class="badge tier">Paid</span></h3>
+          <div class="spine">Spine &middot; Sources &middot; Pipeline &middot; Models &middot; Insights &middot; Decisions &middot; Impact &middot; (placeholder)</div>
+        </div>
+        <div class="cert-metric-tile">
+          <div class="num">7.20</div>
+          <div class="label">NPS &middot; W22</div>
+          <div class="delta up">+1.20 vs trailing 4w</div>
+        </div>
+      </div>
+      <div class="card-eyebrow">Module heatmap (W22 NPS)</div>
+      <div class="modules-strip">
+        <div class="mod-cell"><div class="m">M1</div><div class="v">8.0</div></div>
+        <div class="mod-cell"><div class="m">M2</div><div class="v">7.0</div></div>
+        <div class="mod-cell flag"><div class="m">M3</div><div class="v">6.5</div></div>
+        <div class="mod-cell"><div class="m">M4</div><div class="v">8.0</div></div>
+        <div class="mod-cell empty"><div class="m">M5</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M6</div><div class="v">&mdash;</div></div>
+      </div>
+      <div class="two-col">
+        <div>
+          <h3>What is working</h3>
+          <p>The mindset-shift content lands. "Pipeline-as-product" is doing the same throughline work that "prompting-as-product-configuration" does in AI PM &mdash; an atom worth promoting to portfolio level. Insights-to-decisions module gives learners storytelling structure they take back to work.</p>
+          <div class="quote">Pipeline-as-product is a mindset shift I needed. Examples were great.<span class="meta">2026-W22 DPM cohort 9 &middot; M1</span></div>
+          <div class="quote">Insights-to-decisions module gave me the storytelling structure I needed.<span class="meta">2026-W22 DPM cohort 9 &middot; M4</span></div>
+        </div>
+        <div>
+          <h3>Where it is struggling</h3>
+          <p>M3 (feature stores) sustained-low for two weeks. Root cause from both students and the instructor: too implementation-heavy for a PM cohort. The audience asked for a PM-first reframe, not the existing engineer-targeted deep dive.</p>
+          <div class="quote">Feature stores section was too implementation-heavy for a PM cohort. Most of us aren't going to write the code.<span class="meta">2026-W22 DPM cohort 9 &middot; M3</span></div>
+          <div class="quote">Feature-store deep dive lands with the engineers in the room and loses everyone else. Need a PM-first reframe.<span class="meta">2026-W22 DPM cohort 9 instructor &middot; M3</span></div>
+        </div>
+      </div>
+      <h3 style="margin-top: 24px;">Recommended library actions</h3>
+      <div class="actions">
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Reframe DPM M3 from "how feature stores work" to "what a PM needs to know about feature stores".</strong> The instructor's diagnosis is precise and matches the student data. Same content, different audience cut.</div></div>
+        <div class="action"><span class="size s">S</span><div class="action-text"><strong>Promote the "pipeline-as-product" atom to portfolio level.</strong> Same role as Juno PM throughline in AI PM. Throughline atoms are the highest-leverage reusable content this assessment has surfaced.</div></div>
+        <div class="action"><span class="size l">L</span><div class="action-text"><strong>Cross-link DPM M2 (model evaluation) with AI PM M6 (eval stack) and AI Vibe Coding M6 (evals).</strong> Three certs are teaching evals; today they do not reference each other.</div></div>
+      </div>
+      <h3 style="margin-top: 20px;">Open questions</h3>
+      <ul>
+        <li>Where does the PM/engineer split actually sit in DPM cohorts? If 60%+ are PMs, the M3 reframe is unambiguous; if it's 50/50, the answer is two tracks.</li>
+      </ul>
+    </div>
+
+    <!-- PRODUCT MARKETING CERTIFICATE (PMM) -->
+    <div class="cert-section compact" id="pmm">
+      <div class="cert-head">
+        <div>
+          <h3>Product Marketing Certificate &middot; PMM<span class="badge tracked">Tracked-only</span><span class="badge tier">Paid</span></h3>
+          <div class="spine">Spine &middot; Audience &middot; Positioning &middot; Story &middot; Launch &middot; Adoption &middot; Measure &middot; (placeholder)</div>
+        </div>
+        <div class="cert-metric-tile">
+          <div class="num">8.00</div>
+          <div class="label">NPS &middot; W22</div>
+          <div class="delta down">-0.50 vs trailing 4w</div>
+        </div>
+      </div>
+      <div class="card-eyebrow">Module heatmap (W22 NPS)</div>
+      <div class="modules-strip">
+        <div class="mod-cell"><div class="m">M1</div><div class="v">8.0</div></div>
+        <div class="mod-cell"><div class="m">M2</div><div class="v">9.0</div></div>
+        <div class="mod-cell"><div class="m">M3</div><div class="v">7.0</div></div>
+        <div class="mod-cell"><div class="m">M4</div><div class="v">8.0</div></div>
+        <div class="mod-cell empty"><div class="m">M5</div><div class="v">&mdash;</div></div>
+        <div class="mod-cell empty"><div class="m">M6</div><div class="v">&mdash;</div></div>
+      </div>
+      <div class="two-col">
+        <div>
+          <h3>What is working</h3>
+          <p>Positioning (M2) is the standout, NPS 9 across both cohorts. The pre-launch readiness checklist (M4) is going straight into students' team wikis the same week. The cert ships practitioner artifacts, which is its strength.</p>
+          <div class="quote">Positioning module is gold. The rewriting exercise alone was worth attending.<span class="meta">2026-W22 PMM cohort 22 &middot; M2</span></div>
+          <div class="quote">Launch module is well-structured. The pre-launch readiness checklist is going straight into our wiki.<span class="meta">2026-W22 PMM cohort 22 &middot; M4</span></div>
+        </div>
+        <div>
+          <h3>The market signal</h3>
+          <p>The single loudest signal across PMM is not weakness; it is unmet demand. Students and the instructor both unprompted requested AI-PMM examples in the same week. PMM is a textbook case where pairing with the AI atom catalog produces immediate content.</p>
+          <div class="quote">Story-arc module solid. Would love AI-PMM examples (we are all dealing with AI launches now).<span class="meta">2026-W22 PMM cohort 22 &middot; M3</span></div>
+          <div class="quote">Launch module is the strongest of the cert. Repeated request from cohort: AI-product launch examples.<span class="meta">2026-W22 PMM cohort 22 instructor &middot; M4</span></div>
+        </div>
+      </div>
+      <h3 style="margin-top: 24px;">Recommended library actions</h3>
+      <div class="actions">
+        <div class="action"><span class="size s">S</span><div class="action-text"><strong>Ship 2-3 AI-product launch case studies into PMM M4.</strong> The material exists in <code>sources/external/product-school-podcast/</code> (multiple recent CPO interviews on AI launches). Compile a one-pager and link from PMM M4 inside the cohort cycle.</div></div>
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Reuse the AI Product Strategy "Reliability Contract" atom in PMM M3 (story).</strong> Trust language is now table-stakes in AI launches; PMM students need it as a positioning asset.</div></div>
+        <div class="action"><span class="size m">M</span><div class="action-text"><strong>Add PMM as a canonical certification.</strong> The atoms here (positioning rewrite exercise, pre-launch readiness checklist) are durable and would serve enterprise workshops too.</div></div>
+      </div>
+      <h3 style="margin-top: 20px;">Open questions</h3>
+      <ul>
+        <li>Is the W22 dip (-0.50 vs trailing 4w) noise from the small W22 sample, or a real signal? Confirm next cohort.</li>
+      </ul>
+    </div>
   </div>
 </section>
 
 <section class="reveal" id="patterns">
   <div class="container">
     <div class="section-eyebrow">4 &middot; Cross-cutting patterns</div>
-    <h2>What we learn from looking at all three together</h2>
+    <h2>What we learn from looking at the whole portfolio</h2>
     <p class="section-lede">
-      Three signals show up only when the certifications are read as a portfolio, not as three independent products.
+      Five signals show up only when the seven certifications are read as a portfolio, not as seven independent products. The first one is the loudest the data has ever produced.
     </p>
     <div class="two-col">
       <div class="card">
-        <div class="card-eyebrow">Pattern 1 &middot; Sequencing</div>
-        <h3>Module 3 is where density spikes</h3>
-        <p>In two of three certs this week, M3 carries the heaviest technical lift &mdash; agent wiring + eval scaffolding in Vibe Coding, RAG architecture decisions in AI PM. AI PS M3 (the margin module) has not yet generated feedback but is structurally the same kind of content density.</p>
-        <p>Hypothesis: middle modules are systematically asked to ship the heaviest technical content while still introducing learners to the cert's central artifact. This is a sequencing question, not a content quality question.</p>
-        <p><strong>Recommendation:</strong> a portfolio-level pacing audit on every M3 before next cohort.</p>
+        <div class="card-eyebrow">Pattern 1 &middot; Market signal &middot; <strong style="color: var(--warn);">Loudest this week</strong></div>
+        <h3>Every non-AI cert is asking for AI-overlay content</h3>
+        <p>PMM students and instructor: AI-product launch examples. PLC students and instructor: 2026 AI-strategy lens. PMC students: AI-product metrics. DPM students: cross-link to AI eval stack. Four certs, four cohorts, all unprompted, all in the same week.</p>
+        <p>This is not an isolated request. It is the single highest-frequency editorial signal the feedback pipeline has ever surfaced. Senior PMs do not want a separate AI track; they want their existing cert with an AI overlay.</p>
+        <p><strong>Recommendation:</strong> ship an "AI overlay" content layer that reuses the existing AI atom catalog (Reliability Contract, Five AI Value Archetypes, AI Eval Stack, Confidence UX, AI PRD) and threads it into the relevant module of every non-AI cert. A single atom can serve three certs. This is the highest-leverage move in the portfolio this quarter.</p>
       </div>
       <div class="card">
-        <div class="card-eyebrow">Pattern 2 &middot; Atoms</div>
-        <h3>Throughline atoms are doing more work than we credit them for</h3>
-        <p><code>juno-pm-throughline</code>, <code>ai-product-management-execution-arc</code>, and <code>ai-product-strategy-six-questions</code> appear in every module of their respective certs. Vibe Coding's Confidence Line plays the same role.</p>
+        <div class="card-eyebrow">Pattern 2 &middot; Sequencing</div>
+        <h3>Module 3 is where everything goes wrong</h3>
+        <p>Three of seven certs flagged this week, and all three on the same module: AI Vibe Coding M3, PMC M3, DPM M3. Three different content domains (eval scaffolding, stakeholder management, feature stores) showing the same failure shape.</p>
+        <p>Hypothesis: M3 is systematically asked to ship the heaviest technical or organisational content while still introducing learners to the cert's central artifact. The pacing fails the same way regardless of subject.</p>
+        <p><strong>Recommendation:</strong> a portfolio-level M3 pacing audit before next cohort. Reallocate dense content into M2 and M4. Test in one cert first.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Pattern 3 &middot; Atoms</div>
+        <h3>Throughline atoms travel further than any single cert</h3>
+        <p><code>juno-pm-throughline</code>, <code>ai-product-management-execution-arc</code>, <code>ai-product-strategy-six-questions</code> appear in every module of their certs. Vibe Coding's Confidence Line plays the same role. DPM's "pipeline-as-product" plays the same role this week.</p>
         <p>Students consistently cite these throughlines as the single most useful piece of the cert. Instructors describe them as the spine that keeps a session navigable.</p>
-        <p><strong>Recommendation:</strong> promote "throughline" as a first-class atom category. Treat them as portfolio-level assets, not per-cert decoration.</p>
+        <p><strong>Recommendation:</strong> promote "throughline" as a first-class atom category. Treat them as portfolio-level assets. Test reuse across certs (e.g. a "Decision-line" throughline derived from PMC M1's discovery framing).</p>
       </div>
       <div class="card">
-        <div class="card-eyebrow">Pattern 3 &middot; Trust as a portfolio theme</div>
-        <h3>Three M4s are teaching the same lesson</h3>
-        <p>AI Vibe Coding M4 (close the trust gaps), AI PM M4 (design AI-native UX, close hallucination + black-box + control gaps), and AI PS M4 (the contract &mdash; reliability, golden datasets, confidence UX) are three different framings of one underlying skill: making the AI product trustworthy enough to ship.</p>
-        <p>Today this is invisible to learners and to instructors. The cross-link does not exist in any deck.</p>
-        <p><strong>Recommendation:</strong> a shared "Trust Layer" atom set referenced from all three M4s. Single source of truth for golden datasets, reliability contracts, confidence UX patterns.</p>
+        <div class="card-eyebrow">Pattern 4 &middot; Trust as a portfolio theme</div>
+        <h3>Three AI M4s are teaching the same lesson</h3>
+        <p>AI Vibe Coding M4 (close the trust gaps), AI PM M4 (AI-native UX, hallucination + black-box + control gaps), AI PS M4 (the contract &mdash; reliability, golden datasets, confidence UX) are three framings of one underlying skill: making the AI product trustworthy enough to ship. Today the cross-link does not exist in any deck.</p>
+        <p>The Pattern 1 signal extends this: PMM and PLC students are asking for trust language they can use in launches and board conversations. The Trust Layer is not just a course atom &mdash; it is a portfolio asset.</p>
+        <p><strong>Recommendation:</strong> a shared "Trust Layer" atom set referenced from the three AI M4s, PMM M3, and PLC M2. Single source of truth.</p>
       </div>
       <div class="card">
-        <div class="card-eyebrow">Pattern 4 &middot; Feedback asymmetry</div>
-        <h3>Rich student feedback. Sparse instructor reflections. Almost no completion data.</h3>
-        <p>This week's corpus skews heavily toward student NPS + comments. Instructor reflections are present but thin (three records this week). Cohort-level metrics are present but lag a week. Post-cert artifact submissions (the actual proof of learning) are not in the corpus at all.</p>
+        <div class="card-eyebrow">Pattern 5 &middot; Library coverage</div>
+        <h3>Tracked-only certs outnumber canonical certs</h3>
+        <p>Three certs are canonical (full packages in <code>library/packages/certifications/</code>). Four are tracked-only (feedback flows in, no canonical content). For four of seven products, this assessment can recommend signals but cannot point at a specific atom or module to revise.</p>
+        <p>The instinct to package these immediately should be tempered: PMC and PLC are mature programs with existing content artifacts elsewhere. The right move is to <em>atomize first</em>, not to recreate. Pull out the strongest reusable atoms (PMC M1 discovery framing, PLC M1 vision frameworks, PMM M2 positioning rewrite, DPM M1 pipeline-as-product) and bring those into the library; full packages can follow.</p>
+        <p><strong>Recommendation:</strong> a focused atom-extraction sprint targeting the four tracked-only certs. Two atoms per cert in eight weeks.</p>
+      </div>
+      <div class="card">
+        <div class="card-eyebrow">Pattern 6 &middot; Feedback asymmetry</div>
+        <h3>Rich student feedback. Thinner instructor reflections. No completion data.</h3>
+        <p>This week's 39 records: 28 student, 7 instructor, 4 cohort. Useful balance, but the instructor leg is still under-instrumented for the breadth we are now tracking. Cohort-level metrics lag a week. Post-cert artifact submissions are not in the corpus at all.</p>
         <p><strong>Recommendation:</strong> instrument the missing legs. See section 6 below.</p>
       </div>
     </div>
@@ -786,8 +1043,12 @@
           <p>The pipeline is running on a CSV fallback. The single missing input is a 30-second answer from the dashboard owner: which underlying store does the Looker Studio dashboard read from? Sheet, BigQuery, GA4, or other? Once known, the right connector flips from stub to live and the daily ingest is no longer manual. This is the smallest action with the largest leverage in the portfolio right now.</p>
         </div>
         <div class="timeline-block">
-          <h4>Patch the four S-sized course revisions</h4>
-          <p>Vibe Coding M3 fallback recording. AI PM M2 autonomy-lens worked example. AI PM M3 RAG comparison table. AI PS M1 Five-Archetypes one-pager promotion. Together: under three days of work, four user-facing improvements, all grounded in this week's qualitative feedback.</p>
+          <h4>Patch the seven S-sized revisions across canonical and tracked-only certs</h4>
+          <p>Vibe Coding M3 fallback recording. AI PM M2 autonomy-lens worked example. AI PM M3 RAG comparison table. AI PS M1 Five-Archetypes one-pager promotion. PMC M3 stakeholder case-study refresh kickoff. PMM M4 AI launch case-study one-pager. DPM M3 PM-first reframe outline. Together: under one week of work, seven user-facing improvements grounded in this week's qualitative feedback.</p>
+        </div>
+        <div class="timeline-block">
+          <h4>Decide on the AI overlay packaging shape</h4>
+          <p>Pattern 1 is the loudest signal the pipeline has produced. Three options: (a) inline AI atoms into existing PMC / PLC / PMM modules, (b) ship a new "AI for [PM | Leaders | Marketers]" companion micro-course, (c) atom-overlay only (PDF supplement). The choice is a packaging call, not a content one. Make it this week.</p>
         </div>
       </div>
 
@@ -795,35 +1056,43 @@
       <div>
         <div class="timeline-block">
           <h4>Phase 2: live NPS badges on the cert hubs</h4>
-          <p>Each module card on the three cert hubs renders a small live NPS + freshness badge that pulls from the latest feedback digest. Visible to anyone we share the hub with; turns the hub from a static brochure into a living dashboard.</p>
+          <p>Each module card on the three canonical cert hubs renders a small live NPS + freshness badge that pulls from the latest feedback digest. Visible to anyone we share the hub with; turns the hub from a static brochure into a living dashboard. Replicate to PMC / PLC / DPM / PMM hubs as they get canonicalised.</p>
+        </div>
+        <div class="timeline-block">
+          <h4>Atomize the four tracked-only certs</h4>
+          <p>Two atoms per cert in eight weeks. Targets: PMC M1 discovery framing, PMC M4 metrics chapter, PLC M1 vision frameworks, PLC M4 1:1 frame, DPM M1 pipeline-as-product, DPM M4 insights-to-decisions, PMM M2 positioning rewrite, PMM M4 pre-launch readiness checklist. Atoms first; full canonical packages follow.</p>
+        </div>
+        <div class="timeline-block">
+          <h4>Ship the AI overlay v1</h4>
+          <p>Whichever packaging shape wins this week: ship the v1. Reuses existing AI atoms (Reliability Contract, Five Value Archetypes, AI Eval Stack, Confidence UX). Validation target: the next PMC, PLC, PMM, DPM cohort sees the overlay material and rates it. Single-cohort A/B is the fastest signal.</p>
         </div>
         <div class="timeline-block">
           <h4>Module deep-link routing</h4>
-          <p>Today AI PM module cards link to the cert root and AI PS cards link to the source repo. Wire per-module destinations so anyone (instructor, student, this assessment) can deep-link to a specific module's deck or notes.</p>
-        </div>
-        <div class="timeline-block">
-          <h4>Trends-to-cert overlay</h4>
-          <p>Cross-reference the weekly external trends digest with each cert's atom catalog. When a "rising" or "newly emerging" phrase touches a known atom, surface it as a content-update suggestion. When a phrase has no atom mapping, surface it as a content-gap suggestion. Closes the loop between market signal and curriculum.</p>
+          <p>Today AI PM module cards link to the cert root and AI PS cards link to the source repo. Wire per-module destinations so anyone (instructor, student, this assessment) can deep-link to a specific module's deck or notes. Same pattern across all canonicalised certs.</p>
         </div>
       </div>
 
       <div class="timeline-tag">Later &middot; this quarter</div>
       <div>
         <div class="timeline-block">
+          <h4>Promote PMC, PLC, DPM, PMM to canonical</h4>
+          <p>Once each tracked-only cert has 6+ atoms in <code>library/atoms/</code>, build the canonical package files under <code>library/packages/certifications/</code> and a shareable HTML hub for each. End state: seven certs, seven canonical packages, seven hubs, one library.</p>
+        </div>
+        <div class="timeline-block">
           <h4>Phase 3: the revision queue</h4>
           <p>When a module sustains a low NPS for the configured window, auto-create a revision-needed source record under <code>sources/internal/revision-queue/</code>. Routed to the package owner via frontmatter. Reviewable in the same triage rhythm as external sources. Closes the CDLC loop end to end.</p>
         </div>
         <div class="timeline-block">
           <h4>Generated assessment</h4>
-          <p>This document becomes a generated artifact. <code>scripts/generate_course_assessment.py</code> regenerates sections 3 and 4 directly from the latest feedback digest, leaving sections 5 and 6 as human-edited synthesis. Output at <code>outputs/assessments/YYYY-Www.html</code>.</p>
+          <p>This document becomes a generated artifact. <code>scripts/generate_course_assessment.py</code> regenerates sections 3 and 4 directly from the latest feedback digest, leaving sections 5 and 6 as human-edited synthesis. Output at <code>outputs/assessments/YYYY-Www.html</code>. Adding a new cert becomes a 2-line edit to <code>config/certifications.json</code>.</p>
         </div>
         <div class="timeline-block">
           <h4>Throughline atom promotion + Trust Layer</h4>
-          <p>Promote throughline atoms (Confidence Line, Juno PM, Six Questions, Execution Arc) to portfolio-level. Stand up the shared Trust Layer atom set referenced across the three M4s. Both turn three certifications into one library.</p>
+          <p>Promote throughline atoms (Confidence Line, Juno PM, Six Questions, Execution Arc, Pipeline-as-Product) to portfolio-level. Stand up the shared Trust Layer atom set referenced across the three AI M4s, PMM M3, and PLC M2. Both turn seven certifications into one library.</p>
         </div>
         <div class="timeline-block">
-          <h4>Mirror the Vibe Coding deck pattern for AI PM and AI PS</h4>
-          <p>AI Vibe Coding has six locally-mirrored shareable decks. AI PM has a deployed GitHub Pages site. AI PS only has a source repo. Bring all three to parity so every cert offers the same shareability experience and the same instrument-for-feedback path.</p>
+          <h4>Mirror the Vibe Coding deck pattern across the portfolio</h4>
+          <p>AI Vibe Coding has six locally-mirrored shareable decks. AI PM has a deployed GitHub Pages site. AI PS only has a source repo. PMC / PLC / DPM / PMM have nothing. Bring all seven to parity so every cert offers the same shareability experience and the same instrument-for-feedback path.</p>
         </div>
       </div>
     </div>
@@ -835,7 +1104,7 @@
     <div class="section-eyebrow">6 &middot; Instrumentation gaps</div>
     <h2>What we still cannot measure</h2>
     <p class="section-lede">
-      The feedback pipeline closed the obvious gap (we can now see what students and instructors think, week over week). Five gaps remain. Each one constrains what this assessment can confidently say.
+      The feedback pipeline closed the obvious gap (we can now see what students and instructors think across the full portfolio, week over week). Seven gaps remain. Each one constrains what this assessment can confidently say.
     </p>
     <div class="gap-grid">
       <div class="card">
@@ -868,6 +1137,12 @@
         <h3>Enterprise-vs-consumer split</h3>
         <p>Enterprise workshops will repackage the same atoms with a different audience. Today our feedback corpus is consumer-cohort-only. As enterprise pilots come online, the same comment ("too dense") will mean very different things in those rooms.</p>
       </div>
+      <div class="card">
+        <div class="card-eyebrow">Gap 7 &middot; Surfaced this week</div>
+        <h3>Cross-cert NPS comparability</h3>
+        <p>The seven certs span very different audiences (early-career PMs in PMC, senior leaders in PLC, marketers in PMM, AI-curious PMs across the AI portfolio). Comparing W22 NPS 9.33 (AI PS) to NPS 7.17 (PMC) without controlling for audience baseline is misleading; the audiences are not the same. Today the digest treats them as comparable.</p>
+        <p>Closing this gap requires either per-audience baselines (NPS minus the cert's own historical mean) or audience metadata on the cohort. The fix is small once decided.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -876,15 +1151,16 @@
   <div class="container">
     <div class="footer-grid">
       <div>
-        Generated as a synthesis of <code>outputs/feedback/latest.md</code>, <code>outputs/trends/</code>, and the canonical packages under <code>library/packages/certifications/</code>.<br>
+        Generated as a synthesis of <code>outputs/feedback/latest.md</code>, <code>outputs/trends/</code>, the canonical packages under <code>library/packages/certifications/</code>, and the cert registry at <code>config/certifications.json</code>.<br>
         Refresh cadence: after every Monday digest, and before any roadmap conversation about course revisions.<br>
-        Currently hand-curated; will become a generated artifact once the live feedback connector is wired (see <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/docs/feedback-ingestion.md" target="_blank" rel="noopener">docs/feedback-ingestion.md</a>).
+        Currently hand-curated; will become a generated artifact once the live feedback connector is wired. Seven certs tracked &mdash; three canonical, four tracked-only. Adding a new cert is a 2-line edit to <code>config/certifications.json</code>. See <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/docs/feedback-ingestion.md" target="_blank" rel="noopener">docs/feedback-ingestion.md</a>.
       </div>
       <div class="footer-links">
         <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/outputs/certifications/ai-vibe-coding/content-overview.html" target="_blank" rel="noopener">AI Vibe Coding hub &rarr;</a>
         <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/outputs/certifications/ai-product-management/content-overview.html" target="_blank" rel="noopener">AI Product Management hub &rarr;</a>
         <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/outputs/certifications/ai-product-strategy/content-overview.html" target="_blank" rel="noopener">AI Product Strategy hub &rarr;</a>
         <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/outputs/feedback/latest.md" target="_blank" rel="noopener">Latest feedback digest &rarr;</a>
+        <a href="https://github.com/Product-School-Platform/ps-content-library/blob/main/config/certifications.json" target="_blank" rel="noopener">Cert registry &rarr;</a>
         <a href="https://github.com/Product-School-Platform/ps-content-library" target="_blank" rel="noopener">Source repository &rarr;</a>
       </div>
     </div>
