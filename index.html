@@ -488,6 +488,92 @@
   .cert-section.compact { padding: 24px 28px; }
   .cert-section.compact .cert-head { margin-bottom: 18px; padding-bottom: 14px; }
   .cert-section.compact h3 { font-size: 1.25rem; }
+
+  /* Portfolio scoreboard */
+  .scoreboard-table {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    overflow: hidden;
+    margin-top: 28px;
+  }
+  .scoreboard-row {
+    display: grid;
+    grid-template-columns: minmax(260px, 2.4fr) 1fr 1.4fr 1fr 1fr 1fr;
+    align-items: center;
+    padding: 18px 24px;
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s ease;
+  }
+  .scoreboard-row:last-child { border-bottom: none; }
+  .scoreboard-row:not(.head):hover { background: var(--bg-card-hover); }
+  .scoreboard-row.head {
+    background: rgba(18, 65, 176, 0.16);
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding: 14px 24px;
+  }
+  .sb-cell-cert { display: flex; flex-direction: column; gap: 4px; }
+  .sb-cert-name {
+    font-family: var(--display);
+    font-weight: 600;
+    color: var(--heading);
+    font-size: 1rem;
+    text-decoration: none;
+  }
+  .sb-cert-name:hover { color: var(--light); }
+  .sb-cert-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .sb-cert-meta .canonical { color: var(--good); }
+  .sb-cert-meta .tracked { color: var(--warn); }
+  .sb-num {
+    font-family: var(--display);
+    font-weight: 700;
+    font-size: 1.45rem;
+    color: var(--heading);
+    line-height: 1;
+  }
+  .sb-num.warn { color: var(--warn); }
+  .sb-num.good { color: var(--good); }
+  .sb-delta {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    margin-top: 4px;
+    display: inline-block;
+  }
+  .sb-delta.up { color: var(--good); }
+  .sb-delta.down { color: var(--bad); }
+  .sb-delta.flat { color: var(--muted); }
+  .sb-flagged {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--warn);
+    letter-spacing: 0.06em;
+  }
+  .sb-flagged.none { color: var(--muted); font-weight: 400; }
+  .sb-cell { font-family: var(--mono); font-size: 13px; color: var(--body); }
+  @media (max-width: 880px) {
+    .scoreboard-row { grid-template-columns: 1fr 1fr; gap: 8px; padding: 16px 18px; }
+    .scoreboard-row.head { display: none; }
+    .scoreboard-row .sb-cell-cert { grid-column: 1 / -1; margin-bottom: 6px; }
+  }
 </style>
 </head>
 <body>
@@ -499,6 +585,7 @@
     <div class="nav-links">
       <a class="nav-link" href="#why">Why</a>
       <a class="nav-link" href="#pipeline">Pipeline</a>
+      <a class="nav-link" href="#scoreboard">Scoreboard</a>
       <a class="nav-link" href="#certs">Certifications</a>
       <a class="nav-link" href="#patterns">Patterns</a>
       <a class="nav-link" href="#backlog">Backlog</a>
@@ -597,9 +684,116 @@
   </div>
 </section>
 
+<section class="reveal" id="scoreboard">
+  <div class="container">
+    <div class="section-eyebrow">3 &middot; Portfolio scoreboard</div>
+    <h2>How every certification is doing this week</h2>
+    <p class="section-lede">
+      Cert-level snapshot of W22 across the full portfolio. Pulled directly from <code>outputs/feedback/2026-W22.md</code>. Sorted by tier (canonical AI portfolio first, then tracked-only core programs). NPS this week is compared to the trailing 4-week mean; module-level flags surface any module sustained-low for 2+ weeks.
+    </p>
+    <div class="scoreboard-table">
+      <div class="scoreboard-row head">
+        <div>Certification</div>
+        <div>NPS &middot; W22</div>
+        <div>vs trailing 4w</div>
+        <div>Rating</div>
+        <div>Responses</div>
+        <div>Flagged modules</div>
+      </div>
+
+      <div class="scoreboard-row">
+        <div class="sb-cell-cert">
+          <a class="sb-cert-name" href="#vibe">AI Vibe Coding</a>
+          <div class="sb-cert-meta"><span class="canonical">Canonical</span><span>Free</span></div>
+        </div>
+        <div><div class="sb-num warn">7.67</div></div>
+        <div><span class="sb-delta up">+0.92</span></div>
+        <div class="sb-cell">4.10</div>
+        <div class="sb-cell">7</div>
+        <div><span class="sb-flagged">&#9888; M3</span></div>
+      </div>
+
+      <div class="scoreboard-row">
+        <div class="sb-cell-cert">
+          <a class="sb-cert-name" href="#pm">AI Product Management</a>
+          <div class="sb-cert-meta"><span class="canonical">Canonical</span><span>Paid</span></div>
+        </div>
+        <div><div class="sb-num">8.50</div></div>
+        <div><span class="sb-delta up">+1.17</span></div>
+        <div class="sb-cell">4.42</div>
+        <div class="sb-cell">5</div>
+        <div><span class="sb-flagged none">&mdash;</span></div>
+      </div>
+
+      <div class="scoreboard-row">
+        <div class="sb-cell-cert">
+          <a class="sb-cert-name" href="#strategy">AI Product Strategy</a>
+          <div class="sb-cert-meta"><span class="canonical">Canonical</span><span>Paid</span></div>
+        </div>
+        <div><div class="sb-num good">9.33</div></div>
+        <div><span class="sb-delta up">+1.83</span></div>
+        <div class="sb-cell">4.77</div>
+        <div class="sb-cell">4</div>
+        <div><span class="sb-flagged none">&mdash;</span></div>
+      </div>
+
+      <div class="scoreboard-row">
+        <div class="sb-cell-cert">
+          <a class="sb-cert-name" href="#pmc">Product Management Certificate &middot; PMC</a>
+          <div class="sb-cert-meta"><span class="tracked">Tracked-only</span><span>Paid</span></div>
+        </div>
+        <div><div class="sb-num warn">7.17</div></div>
+        <div><span class="sb-delta up">+1.17</span></div>
+        <div class="sb-cell">3.88</div>
+        <div class="sb-cell">7</div>
+        <div><span class="sb-flagged">&#9888; M3</span></div>
+      </div>
+
+      <div class="scoreboard-row">
+        <div class="sb-cell-cert">
+          <a class="sb-cert-name" href="#plc">Product Leader Certificate &middot; PLC</a>
+          <div class="sb-cert-meta"><span class="tracked">Tracked-only</span><span>Paid</span></div>
+        </div>
+        <div><div class="sb-num">8.50</div></div>
+        <div><span class="sb-delta up">+0.50</span></div>
+        <div class="sb-cell">4.40</div>
+        <div class="sb-cell">5</div>
+        <div><span class="sb-flagged none">&mdash;</span></div>
+      </div>
+
+      <div class="scoreboard-row">
+        <div class="sb-cell-cert">
+          <a class="sb-cert-name" href="#dpm">Data Product Manager Certificate &middot; DPM</a>
+          <div class="sb-cert-meta"><span class="tracked">Tracked-only</span><span>Paid</span></div>
+        </div>
+        <div><div class="sb-num warn">7.20</div></div>
+        <div><span class="sb-delta up">+1.20</span></div>
+        <div class="sb-cell">3.92</div>
+        <div class="sb-cell">6</div>
+        <div><span class="sb-flagged">&#9888; M3</span></div>
+      </div>
+
+      <div class="scoreboard-row">
+        <div class="sb-cell-cert">
+          <a class="sb-cert-name" href="#pmm">Product Marketing Certificate &middot; PMM</a>
+          <div class="sb-cert-meta"><span class="tracked">Tracked-only</span><span>Paid</span></div>
+        </div>
+        <div><div class="sb-num">8.00</div></div>
+        <div><span class="sb-delta down">-0.50</span></div>
+        <div class="sb-cell">4.25</div>
+        <div class="sb-cell">5</div>
+        <div><span class="sb-flagged none">&mdash;</span></div>
+      </div>
+    </div>
+    <p style="font-family: var(--mono); font-size: 12px; color: var(--muted); margin-top: 14px; letter-spacing: 0.06em;">
+      Numbers update weekly when <code>scripts/generate_feedback_digest.py</code> runs (Mondays via <code>weekly-feedback.yml</code>). Click any cert name to jump to its deep dive.
+    </p>
+  </div>
+</section>
+
 <section class="reveal" id="certs">
   <div class="container">
-    <div class="section-eyebrow">3 &middot; Per-cert deep dive</div>
+    <div class="section-eyebrow">4 &middot; Per-cert deep dive</div>
     <h2>Seven certifications, three feedback patterns</h2>
     <p class="section-lede">
       Each section pairs whatever the library knows about the cert (canonical packages where they exist; placeholder when they do not yet) with this week's feedback. Quotes and metrics are pulled from <code>outputs/feedback/2026-W22.md</code>. Recommendations are sized S (under a day), M (one to two weeks), L (one to two cohorts to validate).
@@ -976,7 +1170,7 @@
 
 <section class="reveal" id="patterns">
   <div class="container">
-    <div class="section-eyebrow">4 &middot; Cross-cutting patterns</div>
+    <div class="section-eyebrow">5 &middot; Cross-cutting patterns</div>
     <h2>What we learn from looking at the whole portfolio</h2>
     <p class="section-lede">
       Five signals show up only when the seven certifications are read as a portfolio, not as seven independent products. The first one is the loudest the data has ever produced.
@@ -1029,7 +1223,7 @@
 
 <section class="reveal" id="backlog">
   <div class="container">
-    <div class="section-eyebrow">5 &middot; The backlog (sequenced)</div>
+    <div class="section-eyebrow">6 &middot; The backlog (sequenced)</div>
     <h2>What to do, in order</h2>
     <p class="section-lede">
       Sized in three horizons. The top horizon is what we do this week. The middle horizon is what we ship inside a cohort cycle. The bottom horizon is the next quarter of work.
@@ -1101,7 +1295,7 @@
 
 <section class="reveal" id="gaps">
   <div class="container">
-    <div class="section-eyebrow">6 &middot; Instrumentation gaps</div>
+    <div class="section-eyebrow">7 &middot; Instrumentation gaps</div>
     <h2>What we still cannot measure</h2>
     <p class="section-lede">
       The feedback pipeline closed the obvious gap (we can now see what students and instructors think across the full portfolio, week over week). Seven gaps remain. Each one constrains what this assessment can confidently say.
