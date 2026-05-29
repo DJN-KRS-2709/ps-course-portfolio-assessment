@@ -791,7 +791,7 @@
   </div>
 </section>
 
-<section class="reveal" id="certs">
+<section id="certs">
   <div class="container">
     <div class="section-eyebrow">4 &middot; Per-cert deep dive</div>
     <h2>Seven certifications, three feedback patterns</h2>
@@ -1378,8 +1378,14 @@
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.1 });
+  }, { threshold: 0.05 });
   document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+  // Safety net: ensure no .reveal element stays invisible if the observer
+  // misses it (large sections, hash-anchor navigation, reduced-motion, etc.)
+  window.setTimeout(() => {
+    document.querySelectorAll('.reveal:not(.visible)').forEach((el) => el.classList.add('visible'));
+  }, 1500);
 </script>
 </body>
 </html>
